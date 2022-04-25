@@ -1,5 +1,18 @@
 import initialState from "./initialState";
-import {createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import weatherService from "../api/weatherAPI";
+
+export const getWeatherData = createAsyncThunk(
+    "main/weatherData",
+    async ({lat, lon}) => {
+        try {
+            const response = await weatherService.getData(lat, lon);
+            return response.data;
+        } catch (error) {
+            alert(error);
+        }
+    }
+);
 
 const mainSlice = createSlice({
     name: 'main',
@@ -9,6 +22,14 @@ const mainSlice = createSlice({
             state.currentNameInput = action.payload;
         },
     },
+    extraReducers: {
+        [getWeatherData.fulfilled]: (state, action) => {
+            state.weatherData = action.payload;
+        },
+        [getWeatherData.rejected]: (state) => {
+            state.weatherData = "ERROR!";
+        },
+    }
 })
 
 export const {
