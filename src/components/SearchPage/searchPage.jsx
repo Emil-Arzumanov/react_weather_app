@@ -42,6 +42,14 @@ const SearchPage = function () {
                         weatherSlice.weatherData ? Math.round(weatherSlice.weatherData.main.temp - 273.15) + "°C" : ""
                     }
                 </p>
+                {
+                    weatherSlice.weatherData ?  console.log(weatherSlice.weatherData) : ""
+                }
+                <p>
+                    {
+                        weatherSlice.weatherData ? weatherSlice.weatherData.weather[0].main : ""
+                    }
+                </p>
                 <p>
                     searchPage
                 </p>
