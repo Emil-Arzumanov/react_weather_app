@@ -47,6 +47,7 @@ const mainSlice = createSlice({
         [getWeatherDataByCityName.fulfilled]: (state, action) => {
             state.weatherData = action.payload;
             state.currentCityNameInput = "";
+            console.log(action.payload);
         },
         [getWeatherDataByCityName.rejected]: (state) => {
             state.weatherData = "ERROR!";

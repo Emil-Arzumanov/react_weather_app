@@ -1,16 +1,14 @@
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
-import searchStyle from "./searchPage.module.css";
+import searchStyle from "./citySearch.module.css";
 import {getWeatherDataByCityName, getWeatherDataByCoords, updateCurrentCityNameInput} from "../../redux/mainReducer";
 
-const SearchPage = function () {
+const CitySearch = function () {
         const weatherSlice = useSelector(state => state.mainReducer);
         const dispatch = useDispatch();
+
         return (
             <div>
-                <p>
-                    <Link to={"/"} className={searchStyle.button}>To CityListPage</Link>
-                </p>
                 <input
                     type="text"
                     placeholder="Enters address..."
@@ -22,6 +20,7 @@ const SearchPage = function () {
                 >
                     getWeatherDataByCityName
                 </button>
+                {/*
                 <p>
                     <button
                         onClick={() => dispatch(getWeatherDataByCoords({
@@ -32,30 +31,10 @@ const SearchPage = function () {
                         getWeatherDataByCoords
                     </button>
                 </p>
-                <p>
-                    {
-                        weatherSlice.weatherData ? weatherSlice.weatherData.name : ""
-                    }
-                </p>
-                <p>
-                    {
-                        weatherSlice.weatherData ? Math.round(weatherSlice.weatherData.main.temp - 273.15) + "°C" : ""
-                    }
-                </p>
-                {
-                    weatherSlice.weatherData ?  console.log(weatherSlice.weatherData) : ""
-                }
-                <p>
-                    {
-                        weatherSlice.weatherData ? weatherSlice.weatherData.weather[0].main : ""
-                    }
-                </p>
-                <p>
-                    searchPage
-                </p>
+                */}
             </div>
         );
     }
 ;
 
-export default SearchPage;
+export default CitySearch;
